@@ -2,6 +2,7 @@ import react, {useState} from 'react'
 import axios from 'axios'
 import {Button} from '@mui/material';
 import { Input } from '@mui/material';
+import { TextField } from '@mui/material'
 
 import Select from 'react-select'
 
@@ -73,12 +74,14 @@ const App = () => {
         <div>
         {
           toggleState === false
-          ?<Button size = 'medium' variant = 'outlined' onClick={() => {setToggleState(true)} }>Send to email</Button>
+          ?<div>
+              <Button size = 'medium' variant = 'outlined' onClick={() => {setToggleState(true)} }>Send to email</Button>
+            </div>
           :null
         }
         </div>
         {
-          toggleState == true
+          toggleState === true
           ?
             (
               <div
@@ -89,8 +92,8 @@ const App = () => {
                   alignItems: "center",
                 }}
               >
-                <p>Enter email</p>
-                <Input 
+                <TextField id="outlined-basic" label="Email" variant="outlined" value={emailID} onChange={(event) => setEmailID(event.target.value)} />
+                {/* <Input 
                   style={{
                     width: "40vw",
                     marginTop: "10px",
@@ -100,7 +103,7 @@ const App = () => {
                   variant='outlined' 
                   color='secondary'
                   size='small'
-                  placeholder="Email to send to" value={emailID} onChange={(event) => setEmailID(event.target.value)}/>
+                  placeholder="Email to send to" value={emailID} onChange={(event) => setEmailID(event.target.value)}/> */}
                 <p>When do you want to schedule?</p>
           
                 <Select 

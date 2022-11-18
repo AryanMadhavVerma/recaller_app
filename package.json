@@ -1,0 +1,11 @@
+{
+    "name": "launcher",
+    "version": "1.0.0",
+    "main": "",
+    "scripts": {
+        "start": "npm start --prefix server",
+        "install-client": "cd app_client && npm install && npm run build && cd ..",
+        "install-server": "cd app_server && npm install && cd .. ",
+        "heroku-postbuild": "npm run install-client && npm run install-server"
+    }
+}
