@@ -3,37 +3,45 @@ import axios from 'axios'
 import {Button} from '@mui/material';
 import { Input } from '@mui/material';
 
-
+import Select from 'react-select'
 
 const App = () => {
 
   const [content,setContent] = useState('')
   const [toggleState, setToggleState] = useState(false)
   const [emailID,setEmailID] = useState('')
-
-
-
-    
+  const [days, setDays] = useState({value: '0', label: 'Today'})
+  
+  const handleDayChange = (obj) => {
+    setDays(obj)
+  }
 
   const sendEmail = (event) => {
-      console.log(`${content} and ${emailID}`)
-      axios.post('/sendEmail', {
-          emailID,
-          content,
-      }).then(response => {
-          console.log(`Rnesponse has been sent!!!`)
+
+      const sendObject = {
+        emailID: emailID,
+        content: content,
+        days: days.value,
+      }
+
+      console.log('Obejct to be sent is', sendObject)
+      axios.post('/sendEmail', sendObject).then(response => {
+          console.log(`Response has been sent!!!`)
       })
 
       setEmailID('')
       setContent('')
+      setDays(days.value = '0', days.label = 'Today')
 
   }
+  //dayselect logic
 
-    
-    
+  const options = [
+    { value: '0', label: 'Today' },
+    { value: '1', label: 'Tomorrow' },
+    { value: '7', label: 'Next week' }
+  ]
 
-
-  
 
   return (
     <div style={{
@@ -93,7 +101,22 @@ const App = () => {
                   color='secondary'
                   size='small'
                   placeholder="Email to send to" value={emailID} onChange={(event) => setEmailID(event.target.value)}/>
-                <Button size = 'medium' variant = 'outlined' onClick={sendEmail}>Send</Button>
+                <p>When do you want to schedule?</p>
+          
+                <Select 
+                  value={days}
+                  options={options}
+                  onChange={handleDayChange}
+                  getOptionLabel={x => x.label}
+                  getOptionValue={x => x.value} />
+                  
+                <Button 
+                  style={{
+                    marginTop: "10px",
+                    marginBottom: "10px",
+                  }} 
+                  size = 'medium' variant = 'outlined' onClick={sendEmail}>Recall</Button>
+                
               </div>
             )
           : 
@@ -101,6 +124,8 @@ const App = () => {
               null
             )
         }
+      
+        
 
       </form>
     </div>
