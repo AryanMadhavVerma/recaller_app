@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.26f9518c.css","mappings":"AAAA,UAGI,wBAA4B,CAD5B,qDAEJ","sources":["index.css"],"sourcesContent":["body,\nhtml {\n    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n    background-color: whitesmoke;\n}"],"names":[],"sourceRoot":""}

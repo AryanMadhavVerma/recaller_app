@@ -4,6 +4,9 @@ import {Button} from '@mui/material';
 import { Input } from '@mui/material';
 import { TextField } from '@mui/material'
 
+import logo from './recaller-logo-light.png';
+
+// ...later
 
 import Select from 'react-select'
 
@@ -17,12 +20,12 @@ const App = () => {
       // match with the menu
       borderRadius: state.isFocused ? "3px 3px 0 0" : 3,
       // Overwrittes the different states of border
-      borderColor: state.isFocused ? "blue" : "white",
+      borderColor: state.isFocused ? "lightGrey" : "grey",
       // Removes weird border around container
       boxShadow: state.isFocused ? null : null,
       "&:hover": {
         // Overwrittes the different states of border
-        borderColor: state.isFocused ? "blue" : "white"
+        borderColor: state.isFocused ? "lightGrey" : "lightGrey"
       }
     }),
     option: (styles, {isFocused, isSelected}) => ({
@@ -30,7 +33,7 @@ const App = () => {
       background: isFocused
           ? 'grey'
           : isSelected
-              ? 'black'
+              ? 'dark'
               : undefined,
       zIndex: 1
   }),
@@ -56,7 +59,7 @@ const App = () => {
   const [content,setContent] = useState('')
   const [toggleState, setToggleState] = useState(false)
   const [emailID,setEmailID] = useState('')
-  const [days, setDays] = useState({value: '0', label: 'Today'})
+  const [days, setDays] = useState({value: '0', label: 'right now'})
   
   const handleDayChange = (obj) => {
     setDays(obj)
@@ -73,19 +76,22 @@ const App = () => {
       console.log('Obejct to be sent is', sendObject)
       axios.post('/sendEmail', sendObject).then(response => {
           console.log(`Response has been sent!!!`)
+
       })
 
       setEmailID('')
       setContent('')
-      setDays(days.value = '0', days.label = 'Today')
+      setDays(days.value = '0', days.label = 'right now')
 
   }
   //dayselect logic
 
   const options = [
-    { value: '0', label: 'Today' },
-    { value: '1', label: 'Tomorrow' },
-    { value: '7', label: 'Next week' }
+    { value: '0', label: 'right now' },
+    { value: '0.125', label: '3 hours later' },
+    { value: '0.25', label: '6 hours later' },
+    { value: '1', label: 'tomorrow' },
+    { value: '7', label: 'next week' },
   ]
 
 
@@ -97,7 +103,11 @@ const App = () => {
         alignItems: "center",
         backgroundColor: "linear-gradient(#e66465, #9198e5)"
       }}>
-        <h1 style = {{color: "#fff"}}>recaller.</h1>
+        <h1>
+          <a href="#">
+          <img src={logo} alt="recaller logo" height={'50vw'} />
+          </a>
+        </h1>
         <form 
           style={{
             display: "flex",
@@ -107,12 +117,12 @@ const App = () => {
             color: '#f5f4f2',
           }}
           onSubmit={(e) => e.preventDefault()}>
-          <h3>write your thoughts out</h3>
+          <h3>what do you want to recall later?</h3>
           <div>
             <Input
               sx={{
                 width: "80vw",
-                marginTop: "10px",
+                marginTop: "20px",
                 marginBottom: "20px",
                 background: "transparent",
                 outline: "none",
@@ -122,8 +132,8 @@ const App = () => {
 
               }} 
               
-              multiline='True'
-              placeholder='What do you want to recall later' value={content} onChange={(e) => setContent(e.target.value)}
+              multiline= {true}
+              placeholder='start typing' value={content} onChange={(e) => setContent(e.target.value)}
 
             />
             
@@ -139,7 +149,11 @@ const App = () => {
                   size = 'medium' variant = 'outlined' onClick={() => {setToggleState(true)} }>Send to Email
                 </Button>
                 <Button 
-                  disabled = 'true' size = 'medium' variant = 'outlined' onClick={() => {setToggleState(false)} }>Send to Notion
+                  style = {{
+                     color: "grey",
+                     borderColor: "grey",
+                  }}
+                  disabled = {true} size = 'medium' variant = 'outlined' onClick={() => {setToggleState(false)} }>Send to Notion
                 </Button>
               </div>
             :null
@@ -160,7 +174,7 @@ const App = () => {
                   <TextField 
                     sx={{
                       width: "300px",
-                      "& .MuiInputLabel-root": {color: 'white'},//styles the label
+                      "& .MuiInputLabel-root": {color: 'lightGrey'},//styles the label
                       "& .MuiOutlinedInput-root": {
                         "& > fieldset": { borderColor: "default" },
                       },
@@ -184,7 +198,7 @@ const App = () => {
                     color='secondary'
                     size='small'
                     placeholder="Email to send to" value={emailID} onChange={(event) => setEmailID(event.target.value)}/> */}
-                  <p>When do you want to schedule?</p>
+                  <p>when to schedule?</p>
             
                   <Select
                     styles = {customStyles}

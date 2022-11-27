@@ -26,31 +26,29 @@ const schedule = require('node-schedule');
 
 const scheduler = (emailID, content, days) => {
 
-    const date = new Date(Date.now() + days*24*60*60*1000)
+    const date = new Date(Date.now() + days*24*60*60*1000 + 5000)
     console.log(`Mail is being scheduled for ${date}`)
+
     const job = schedule.scheduleJob(date, function(){
-    console.log('Mail is scheduled');
-    });
+    console.log(`Mail is scheduled for ${date}`);
+    
     const { requestId } = courier.send({
         message: {
             to: {
-            data: {},
-            email: `${emailID}`,
+              email: `${emailID}`,
             },
-            content: {
-            title: "Recaller App",
-            body: `${content}`,
+            template: "0BD0RW7MPCM083GX8PB037MZCVHJ",
+            data: {
+              content: `${content}`,
+              variables: "awesomeness",
             },
-            routing: {
-            method: "single",
-            channels: ["email"],
-            },
-        },
-        }).then((result) => {
+        }}).then((result) => {
             console.log("Email has been sent")
         }).catch(error => {
             console.log("There was a problem sending the email")
         })
+    });
+    
 }
 
 // Example: send a basic message to an email recipient
@@ -65,7 +63,5 @@ app.post("/sendEmail", (request,response) => {
     }
     response.status(201).json(emailDetails)
     scheduler(emailDetails.emailID,emailDetails.content, emailDetails.days)
-    
-    
     
 })

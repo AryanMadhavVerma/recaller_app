@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.26f9518c.css",
-    "main.js": "/static/js/main.ebba6551.js",
+    "main.css": "/static/css/main.734d6d69.css",
+    "main.js": "/static/js/main.32977eea.js",
+    "static/media/recaller-logo-light.png": "/static/media/recaller-logo-light.83faa388241e4008ac80.png",
     "index.html": "/index.html",
-    "main.26f9518c.css.map": "/static/css/main.26f9518c.css.map",
-    "main.ebba6551.js.map": "/static/js/main.ebba6551.js.map"
+    "main.734d6d69.css.map": "/static/css/main.734d6d69.css.map",
+    "main.32977eea.js.map": "/static/js/main.32977eea.js.map"
   },
   "entrypoints": [
-    "static/css/main.26f9518c.css",
-    "static/js/main.ebba6551.js"
+    "static/css/main.734d6d69.css",
+    "static/js/main.32977eea.js"
   ]
 }
