@@ -16,7 +16,7 @@ See `contributing.md` for ways to get started.
 
 ## Feedback
 
-If you have any feedback, please reach out to me on [Twitter](twitter.com/aryanmadhaverma)
+If you have any feedback, please reach out to me on [Twitter](https://twitter.com/aryanmadhaverma)
 
 
 ## Authors
