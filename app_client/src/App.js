@@ -153,7 +153,7 @@ const App = () => {
                      color: "grey",
                      borderColor: "grey",
                   }}
-                  disabled = {true} size = 'medium' variant = 'outlined' onClick={() => {setToggleState(false)} }>Send to Notion
+                  disabled = {true} size = 'medium' variant = 'outlined' onClick={() => {setToggleState(false)} }>Send to Whatsapp
                 </Button>
               </div>
             :null
