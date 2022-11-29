@@ -7,6 +7,23 @@ We love your input! We want to make contributing to this project as easy and tra
 - Proposing new features
 - Becoming a maintainer
 
+# Get started
+### Setup
+run this bash script to set things up to speed 
+```bash 
+cd app_client && npm install && cd ..
+cd app_server && npm install && cd ..
+```
+### Building and testing
+For any change you are making, make sure that you run `npm run client_build` from the root folder. This will create a static build of the frontend, store it in the backend and both the client and server files can run on a single port. A simple `npm start` post changes should make the app work
+
+**Envronment Variables** you need
+
+`PORT`: Put anything (eg 4000)
+
+`AUTH_KEY`: DM me on [Twitter](https://twitter.com/aryanmadhaverma) for this
+
+
 ## We Develop with Github
 We use github to host code, to track issues and feature requests, as well as accept pull requests.
 
