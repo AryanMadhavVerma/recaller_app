@@ -228,7 +228,9 @@ const App = () => {
           </div>
         ) : null}
       </form>
+      <p>The service currently won't work because server has been shut down due to increasing costs on DigitalOcean</p>
     </div>
+    
   );
 };
 
