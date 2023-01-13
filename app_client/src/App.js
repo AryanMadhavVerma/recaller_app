@@ -99,9 +99,7 @@ const App = () => {
       }}
     >
       <h1>
-        <a href='#'>
           <img src={logo} alt='recaller logo' height={'50vw'} />
-        </a>
       </h1>
       <form
         style={{
