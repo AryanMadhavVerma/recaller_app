@@ -16,7 +16,7 @@ PORT: 4000
 AUTH_KEY: "pk_prod_sjkdnfksjdfkj323j"
 ```
 
-When you do an `npm start`, these scripts will run. 
+When you do an `npm start` in the `/` directory of the repository, these scripts will run. 
 ```
         "start": "npm run client_build && npm start --prefix app_server",
         "client_build": "cd app_server && rm -rf build && cd ../app_client && npm run build && cp -r build ../app_server/build"
